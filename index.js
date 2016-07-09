@@ -4,16 +4,20 @@ var io = require('socket.io')(http);
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
+// app.get('/', function(req, res){
+//   res.sendFile(__dirname + '/index2.html');
+// });
 
 io.on('connection', function(socket){
+  console.log(socket.client.id);
   socket.on('chat message', function(msg){
+    console.log(msg);
     io.emit('chat message', msg);
   });
 });
 
-http.listen(PORT, function(){
-  console.log('listening on ', PORT);
-});
+io.listen(PORT);
+
+// http.listen(PORT, function(){
+//   console.log('listening on ', PORT);
+// });
