@@ -11,9 +11,8 @@ const PORT = process.env.PORT || 3000;
 
 io.on('connection', function(socket){
   playerInfo(socket);
-  socket.on('playerNumber', function(){
-    console.log('test');
-    socket.send(players[socket.client.id]);
+  socket.on('initialize', function() {
+    socket.emit('initialize', players[socket.client.id]);
   });
   socket.on('paddle', function(paddle){
     io.emit('paddle', (players, paddle));
