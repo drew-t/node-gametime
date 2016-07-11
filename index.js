@@ -10,13 +10,19 @@ const PORT = process.env.PORT || 3000;
 // });
 
 io.on('connection', function(socket){
-  // console.log(socket.client.id);
-  io.emit('player info', playerInfo(socket));
+  playerInfo(socket);
+  socket.on('playerNumber', function(){
+    socket.send(players[socket.client.id]);
+  });
   socket.on('paddle', function(paddle){
-    // console.log(msg);
-    io.emit('paddle', (playerInfo(socket), paddle));
+    io.emit('paddle', (players, paddle));
+  });
+  socket.on('disconnect', function() {
+    delete players[socket.client.id];
   });
 });
+
+
 
 io.listen(PORT);
 
@@ -33,6 +39,5 @@ function playerInfo(socket){
     else if (socket.conn.server.clientsCount === 4){
       players[socket.client.id] = 'four';
     }
-    console.log(players[socket.client.id]);
     return players[socket.client.id];
 }
