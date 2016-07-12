@@ -21,9 +21,9 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.js'></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-      var socket = io('http://warlordsnode-env.us-west-2.elasticbeanstalk.com');
+      var socket = io('http://127.0.0.1:3000');
       $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
+        socket.emit('chat message', ("from: "+socket.id+" msg: " +$('#m').val()));
         $('#m').val('');
         return false;
       });
