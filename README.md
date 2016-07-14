@@ -1,4 +1,8 @@
-# Game Time Starter Kit
+#Warlords Online
+
+Running live at [Warlords 1602](warlords1602.herokuapp.com)
+
+# To run the server:
 
 To install the dependencies:
 
@@ -14,8 +18,7 @@ npm start
 
 Once the server is running, you can visit:
 
-* `http://localhost:8080/webpack-dev-server/` to run your application.
-* `http://localhost:8080/webpack-dev-server/test.html` to run your test suite in the browser.
+* `http://localhost:3000` to run your application.
 
 To build the static files:
 
